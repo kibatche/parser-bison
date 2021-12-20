@@ -213,7 +213,7 @@ La grammaire
 Et enfin la dernière partie stipule les règles que nous avons mis en place, les explications sont en commentaires :
 
 ```lua
-/*Un program est composé d'une entité command */
+/*Un program est composé d une entité command */
 
 program          :                                            command
                  ;
@@ -224,7 +224,7 @@ command          :               cmd_name cmd_suffix
 /*cmd_name est composé du token WORD*/
 cmd_name         :                                                WORD
                  ;
-/*cmd_suffix est composé du token WORD ou bien d'un autre cmd_suffix et du token WORD */
+/*cmd_suffix est composé du token WORD ou bien d un autre cmd_suffix et du token WORD */
 cmd_suffix       :                                                  WORD
                  |                                       cmd_suffix WORD
                  ;
