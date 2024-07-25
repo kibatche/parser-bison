@@ -457,3 +457,15 @@ Plus concrètement, pour ma part j'ai fait la chose suivante :
 - Je ne l'ai pas fait car il n'y a pas d'intérêt de faire un arbre pour notre minishell (hormis l'intérêt de voir les arbres, et peut-être si on fait les bonus avec les évaluations '||' et '&&' mais c'est la galère à cause de la gestion des parenthèses), et que pour des raisons de temps il me semblait plus simple de mettre en place une liste.
 
 J'espère néanmoins que ce document vous permettra de vous faciliter le début du chemin.
+
+### Aller plus loin ? (màj 2024)
+
+Quelques élèves de l'école 42 viennent de temps en temps vers moi pour des explications plus fournies. Malheureusement, ce tutoriel est une initiation, non pas une somme. Je suis bien sûr disposé à répondre autant que faire ce peut aux questions.
+
+Mais pour rendre à César ([hmmph](https://www.youtube.com/watch?v=fW3DbKYSkpg)) ce qui lui appartient, vous pouvez rendre visite au repo suivant qui est une explication bien plus complète mais aussi plus difficile des AST, lexers et autres parsers : https://github.com/twagger/minishell . 
+
+La façon d'aborder la chose dans notre projet final est différente de celle de Thomas : lui a directement fabriqué un AST (moi non, j'appelle ce que j'ai fait une Abstract Linked List ;) ), et fonctionne via une table des correspondances pour mettre en place son parser et les règles qui le régissent. Une arbre binaire a pour intérêt de faire en sorte qu'implémenter des tokens tels que '||' ou '&&' est faisable, mais c'est aussi - tout du moins pour moi à l'orée de mes études - quelque chose qui était trop complexe et inutile d'un point de vue purement déterministe (faire un minishell, sans les tokens sus-mentionnés). Cependant, si l'algorithmie est pour vous une activité semblable aux mots croisés, n'hésitez pas à jetter un coup d'oeil à la fiche explicative : c'est très bien expliqué et c'est lui de prime abord qui m'a donné envie d'implémenter une telle méthode.
+
+Concernant la table de correspondance (regardez sur son repo), je vous déconseille très fortement de faire cela. C'est une usine à gaz sans nom (enfin si : une usine à gaz), d'après les dire de Thomas lui-même. Préférez une implémentation directe de l'automaton et des états correspondants à telle ou telle étape. Vous me remercierez.
+
+Bon courage !
