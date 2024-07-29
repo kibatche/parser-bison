@@ -422,23 +422,24 @@ Pourquoi le token "END" ? C'est un token particulier qui me permet de signifier 
 | ------------| ------------ | ------------ | ------------ | ------------ | ------------ |
 |1|  0 | vide  | WORD WORD  WORD END| 1 | SHIFT
 |2| 1  | WORD  | WORD WORD END | 0 | REDUCE |
-|3| 0  | cmd_name  | WORD WORD END | 6 | SHIFT
-|4|  6 | cmd_name WORD  | WORD END  | 0 | REDUCE |
-|5|  0 | cmd_name cmd_suffix | WORD END  | 4 | |
-|6|  4 | cmd_name cmd_suffix   | WORD END  | 7 | |
-|7| 7 | cmd_name cmd_suffix   | WORD END  | 8 | SHIFT |
-|8| 8 | cmd_name cmd_suffix WORD  | END  | 0 | REDUCE |
-|9| 0  | cmd_name cmd_suffix  | END  | 4 | |
-|10| 4  | cmd_name cmd_suffix  | END  | 0 |  REDUCE |
-|11| 0  | command | END  | 3 |  |
-|12| 3  | command | END  | 0 |  REDUCE |
-|13| 0  | program | END  | 2 |   |
-|14| 2  | program | END  | 5 | SHIFT  |
-|15| 5  | program END |   |  | Accept. Fin de l'analyse.  |
+|3| 0  | cmd_name  | WORD WORD END | 4 | |
+|4| 4  | cmd_name  | WORD WORD END | 6 | SHIFT |
+|5|  6 | cmd_name WORD  | WORD END  | 0 | REDUCE |
+|6|  0 | cmd_name cmd_suffix | WORD END  | 4 | |
+|7|  4 | cmd_name cmd_suffix   | WORD END  | 7 | |
+|8| 7 | cmd_name cmd_suffix   | WORD END  | 8 | SHIFT |
+|9| 8 | cmd_name cmd_suffix WORD  | END  | 0 | REDUCE |
+|10| 0  | cmd_name cmd_suffix  | END  | 4 | |
+|11| 4  | cmd_name cmd_suffix  | END  | 0 |  REDUCE |
+|12| 0  | command | END  | 3 |  |
+|13| 3  | command | END  | 0 |  REDUCE |
+|14| 0  | program | END  | 2 |   |
+|15| 2  | program | END  | 5 | SHIFT  |
+|16| 5  | program END |   |  | Accept. Fin de l'analyse.  |
 
 Ainsi, avec ce tableau récapitulatif (que vous pouvez reprendre grâce au fichier html, qui inclus des liens vers les états suivants et les règles), on voit que selon notre grammaire, la commande "ls -l -a", représentée par la suite de token "WORD WORD WORD END" est syntaxiquement correct ! Youhou !
 
-Une chose intéressante à remarquer, c'est que les étapes 8 et 9 représentent bien le fait qu'une entité peut devenir elle-même si elle est composée d'une autre entité en plus d'elle même. Ainsi cmd_suffix devient de façon abstraite lui-même s'il est composé d'un token WORD en plus. Les deux entités sont réduites dans un simple cmd_suffix.
+Une chose intéressante à remarquer, c'est que les étapes 9 et 10 représentent bien le fait qu'une entité peut devenir elle-même si elle est composée d'une autre entité en plus d'elle même. Ainsi cmd_suffix devient de façon abstraite lui-même s'il est composé d'un token WORD en plus. Les deux entités sont réduites dans un simple cmd_suffix.
 
 ### Mais que faire de cela ?
 
